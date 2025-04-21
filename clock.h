@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <iomanip>
 using namespace std;
 
 class dateType {
@@ -26,9 +27,12 @@ public:
     
     
     };//data validation needed
-    void printDate() const {
-        cout << (dMonth < 10 ? 0 : "")<< dMonth << "/" << (dDay < 10 ? 0 : "") <<  dDay << "/" << dYear << "\t";
+    void printDate() {
+        cout << setw(2) << setfill('0') << dMonth << "/"
+            << setw(2) << setfill('0') << dDay << "/"
+            << dYear << "\t";
     };
+
     dateType(int m = 1, int d = 1, int y = 2000) {
         dMonth = m;
         dDay = d;
@@ -57,9 +61,12 @@ public:
     
     
     }; //data validation needed
-    void printTime() const {
-        cout << (cHours < 10 ? 0 : "") << cHours << ":" << (cMinutes < 10 ? 0 : "") << cMinutes << ":" << (cSeconds < 10 ? 0 : "") << cSeconds << endl;
-    };
+    void printTime() {
+        cout << setw(2) << setfill('0') << cHours << ":"
+            << setw(2) << setfill('0') << cMinutes << ":"
+            << setw(2) << setfill('0') << cSeconds << endl;
+    }
+
     clockType(int h = 0, int m = 0, int s = 0) {
         cHours = h;
         cMinutes = m;
@@ -74,7 +81,6 @@ public:
 class dateTimeType : public dateType, public clockType {
 public:
     dateTimeType() : dateType(), clockType() {
-
     };
     void setDateTime(int month, int day, int year, int hour, int min, int sec) {
         setDate(month, day, year);

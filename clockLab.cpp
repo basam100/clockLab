@@ -11,6 +11,7 @@ int main()
 	cin >> hour>> min>> sec;
 	dateTimeType basam;
 	basam.setDateTime(month, day, year, hour, min, sec);
+	basam.printDateTime();
 
 	return 0;
 }
